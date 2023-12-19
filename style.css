@@ -1,5 +1,7 @@
 :root {
 	--text-cl: #3c4043;
+	--bg-cl: #222;
+	--caption-cl: #70757a;
 }
 
 textarea:focus {
@@ -88,7 +90,7 @@ body {
 }
 
 .day {
-	color: #70757a;
+	color: var(--caption-cl);
 	text-transform: capitalize;
 }
 
@@ -102,24 +104,49 @@ body {
 	line-height: .5;
 }
 
-.note {
+.modal {
+	display: none;
+	position: absolute;
+	background-color: #fff;
+
 	color: inherit;
 	font-family: cursive;
 	border-radius: 0.8em;
 	padding: 1em;
 	border: none;
-	position: absolute;
+	
 	resize: none;
 	border: 2px solid var(--text-cl);
-	min-height: 10em;
-	min-width: 15em;
+	height: 10em;
+	width: 15em;
 	font-size: 1.5em;
+	overflow: hidden;
 }
 
-.note::selection {
-	background-color: var(--text-cl);
+.modal__child{
+	position: relative;
+	display: none;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal__child.active {
+	display: flex;
+}
+
+.modal__child::selection{
+	background: var(--text-cl);
 	color: #fff;
 }
+
+.modal__close {
+	position: absolute;
+	top: 5px;
+	right: 15px;
+	cursor: pointer;
+}
+
 
 @media (min-width: 992px) {
 	.date {
@@ -131,7 +158,7 @@ body {
 	}
 
 	.current:hover::before {
-		background-color: #222;
+		background-color: var(--bg-cl);
 	}
 }
 
